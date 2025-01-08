@@ -23,7 +23,7 @@ export const studentReceivedMessages = async (
     .addVersionURL()
     .setToken(session.token)
     .setFormData({
-      anneeMessages: `${(new Date()).getFullYear()}-${new Date().getFullYear() + 1}`
+      anneeMessages: `${(new Date()).getFullYear()-1}-${new Date().getFullYear()}`
     });
 
   const response: APIReceivedMessagesList = await request.send(session.fetcher);
