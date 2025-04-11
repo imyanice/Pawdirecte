@@ -10,6 +10,7 @@ import {
 type AttendanceResponse = Readonly<{
   punishments: Array<AttendanceItem>;
   absences: Array<AttendanceItem>;
+  exemptions: Array<AttendanceItem>;
 }>;
 
 export const studentAttendance = async (
@@ -28,9 +29,11 @@ export const studentAttendance = async (
 
   const punishments = response.data.sanctionsEncouragements;
   const absences = response.data.absencesRetards;
+  const exemptions = response.data.dispenses;
 
   return {
     punishments: punishments.map(decodeAttendanceItem),
-    absences: absences.map(decodeAttendanceItem)
+    absences: absences.map(decodeAttendanceItem),
+    exemptions: exemptions.map(decodeAttendanceItem)
   };
 };
